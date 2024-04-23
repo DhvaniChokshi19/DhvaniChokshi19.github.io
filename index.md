@@ -1,64 +1,65 @@
 ---
-# Feel free to add content and custom Front Matter to this file.
-# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 
 layout: home
+title: Building a Three-Tier Application with Docker
 ---
-Following is the tutorial on uploading container images to Dockerhub! In this guide, we'll walk you through the process of sharing your Docker images with others or deploying them to production environments using Dockerhub's cloud-based registry service.
-
 Prerequisites
 Before you begin, make sure you have the following prerequisites:
 
 Docker installed on your local machine
 A Dockerhub account (you can sign up for free at Dockerhub)
-Step 1: Build Your Docker Image
-First, you need to build your Docker image locally on your development machine. Start by creating a Dockerfile in your project directory with the necessary instructions to build your image. Here's a basic example of a Dockerfile for a Node.js application:
 
-# Use the official Node.js image as a base
-FROM node:14
+# Building a Three-Tier Application with Docker
 
-# Set the working directory in the container
-WORKDIR /app
+In this tutorial, we'll walk through the process of building a three-tier application using Docker. A three-tier architecture consists of three distinct layers: presentation tier (frontend), application tier (backend), and data tier (database). We'll containerize each tier separately and set up a multi-container environment.
 
-# Copy package.json and package-lock.json to the working directory
-COPY package*.json ./
+## Step 1: Setting Up the Presentation Tier (Frontend)
 
-# Install dependencies
-RUN npm install
+We'll start by creating the presentation tier, which will be a basic HTML/CSS page displaying some information.
 
-# Copy the rest of the application code to the working directory
-COPY . .
+mkdir my-app
+cd my-app
+Create index.html:
+![Alt Text](E:\SEM6\CLOUD\lab\docker_project\DhvaniChokshi19.github.io\IMG6.png)
 
-# Expose port 3000
-EXPOSE 3000
+Step 2: Building the Application Tier (Backend)
+Next, we'll create the application tier, which will be a Node.js server serving some data.
 
-# Define the command to run the application
-CMD ["npm", "start"]
-Alt text
+mkdir backend
+cd backend
+Create server.js:
 
-Step 2: Tag Your Docker Image
-Once you have built your Docker image, you need to tag it with your Dockerhub username and the desired repository name. Use the following command to tag your image:
+![Alt Text](E:\SEM6\CLOUD\lab\docker_project\DhvaniChokshi19.github.io\IMG7.png)
 
-docker tag <image-id> <your-dockerhub-username>/<repository-name>:<tag>
-Alt text
+Step 3: Configuring the Data Tier (Database)
+For the data tier, we'll use the official MySQL Docker image for the database. However, for brevity, we'll skip the setup in this tutorial.
 
-Replace with the ID of your Docker image (you can find this by running docker images), with your Dockerhub username, with the name of your repository on Dockerhub, and with a version tag for your image (e.g., latest).
+Step 4: Dockerizing Each Tier
+Now, we'll containerize each tier using Docker.
 
-Step 3: Login to Dockerhub
-Before you can push your Docker image to Dockerhub, you need to login to your Dockerhub account using the following command:
+Frontend Dockerfile
+Dockerfile
+# Dockerfile for presentation tier
+![Alt Text](E:\SEM6\CLOUD\lab\docker_project\DhvaniChokshi19.github.io\IMG5.png)
 
-docker login
-Alt text
+# Dockerfile for application tier
+![Alt Text](E:\SEM6\CLOUD\lab\docker_project\DhvaniChokshi19.github.io\IMG4.png)
 
-Enter your Dockerhub username and password when prompted.
+Step 5: Building Docker Images
+Build Docker images for each tier:
+docker build -t presentation-tier .
+docker build -t application-tier ./backend
+![Alt Text](E:\SEM6\CLOUD\lab\docker_project\DhvaniChokshi19.github.io\IMG3.png)
 
-Step 4: Push Your Docker Image to Dockerhub
-Finally, you can push your Docker image to Dockerhub using the following command:
+Step 6: Running Docker Containers
+Run containers for frontend and backend:
+docker run --name frontend-container -d -p 80:80 presentation-tier
+docker run --name backend-container -d -p 3000:3000 application-tier
+![Alt Text](E:\SEM6\CLOUD\lab\docker_project\DhvaniChokshi19.github.io\IMG2.png)
 
-docker push <your-dockerhub-username>/<repository-name>:<tag>
-Alt text
+Step 7: Accessing the Application
+Access the frontend at http://localhost and the backend at http://localhost:3000.
+![Alt Text](path/to/image.png)
+![Alt Text](E:\SEM6\CLOUD\lab\docker_project\DhvaniChokshi19.github.io\IMG2.png)
 
-Replace , , and with the corresponding values.
-
-Conclusion
-You have successfully uploaded your Docker image to Dockerhub. You can now share it with others or deploy it to production environments using Dockerhub's cloud-based registry service.
+Congratulations! You've successfully created a three-tier application using Docker.
