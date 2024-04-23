@@ -40,7 +40,7 @@ Now, we'll containerize each tier using Docker.
 Frontend Dockerfile
 Dockerfile
 # Dockerfile for presentation tier
-![Alt Text](E:\SEM6\CLOUD\lab\docker_project\DhvaniChokshi19.github.io\IMG5.png)
+![Alt Text](DhvaniChokshi19.github.io\IMG5.png)
 
 # Dockerfile for application tier
 ![Alt Text](E:\SEM6\CLOUD\lab\docker_project\DhvaniChokshi19.github.io\IMG4.png)
