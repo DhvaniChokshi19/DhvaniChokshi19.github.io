@@ -20,7 +20,7 @@ We'll start by creating the presentation tier, which will be a basic HTML/CSS pa
 mkdir my-app
 cd my-app
 Create index.html:
-![Alt Text](E:\SEM6\CLOUD\lab\docker_project\DhvaniChokshi19.github.io\IMG6.png)
+![Alt Text](IMG6.png)
 
 Step 2: Building the Application Tier (Backend)
 Next, we'll create the application tier, which will be a Node.js server serving some data.
@@ -29,7 +29,7 @@ mkdir backend
 cd backend
 Create server.js:
 
-![Alt Text](E:\SEM6\CLOUD\lab\docker_project\DhvaniChokshi19.github.io\IMG7.png)
+![Alt Text](IMG7.png)
 
 Step 3: Configuring the Data Tier (Database)
 For the data tier, we'll use the official MySQL Docker image for the database. However, for brevity, we'll skip the setup in this tutorial.
@@ -40,26 +40,26 @@ Now, we'll containerize each tier using Docker.
 Frontend Dockerfile
 Dockerfile
 # Dockerfile for presentation tier
-![Alt Text](DhvaniChokshi19.github.io\IMG5.png)
+![Alt Text](IMG5.png)
 
 # Dockerfile for application tier
-![Alt Text](E:\SEM6\CLOUD\lab\docker_project\DhvaniChokshi19.github.io\IMG4.png)
+![Alt Text](IMG4.png)
 
 Step 5: Building Docker Images
 Build Docker images for each tier:
 docker build -t presentation-tier .
 docker build -t application-tier ./backend
-![Alt Text](E:\SEM6\CLOUD\lab\docker_project\DhvaniChokshi19.github.io\IMG3.png)
+![Alt Text](IMG3.png)
 
 Step 6: Running Docker Containers
 Run containers for frontend and backend:
 docker run --name frontend-container -d -p 80:80 presentation-tier
 docker run --name backend-container -d -p 3000:3000 application-tier
-![Alt Text](E:\SEM6\CLOUD\lab\docker_project\DhvaniChokshi19.github.io\IMG2.png)
+![Alt Text](IMG2.png)
 
 Step 7: Accessing the Application
 Access the frontend at http://localhost and the backend at http://localhost:3000.
-![Alt Text](path/to/image.png)
-![Alt Text](E:\SEM6\CLOUD\lab\docker_project\DhvaniChokshi19.github.io\IMG2.png)
+![Alt Text](IMG2.png)
 
 Congratulations! You've successfully created a three-tier application using Docker.
+
