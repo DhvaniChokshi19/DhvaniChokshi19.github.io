@@ -26,7 +26,8 @@ Dockerfile Explanation
 Presentation Tier (Frontend): The Dockerfile for the presentation tier uses the official Nginx image and copies the index.html file into the Nginx HTML directory.
 Application Tier (Backend): The Dockerfile for the application tier uses the official Node.js image, sets the working directory, copies the server.js file into the working directory, exposes port 3000, and specifies the command to run the Node.js server.
 Directory Structure
-three-tier-docker/
+
+my-app/
 ├── backend/
 │   ├── Dockerfile
 │   └── server.js
